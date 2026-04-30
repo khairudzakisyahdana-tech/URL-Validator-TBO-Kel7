@@ -98,6 +98,7 @@ export default function Home() {
           <input
             type="text"
             className="w-full p-4 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 text-black font-mono text-sm"
+            placeholder="Masukkan URL yang ingin diuji"
             value={url}
             onChange={(e) => setUrl(e.target.value)}
           />

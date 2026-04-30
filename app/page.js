@@ -1,16 +1,12 @@
-'use client'; // Wajib di Next.js karena kita pakai state interaktif
+'use client';
 
 import { useState } from 'react';
 
-// =======================================================
-// BAGIAN 1: LOGIKA MESIN TBO (Terpisah dari urusan UI)
-// =======================================================
 const jalankanMesinAutomata = (inputUrl) => {
   let logs = [];
   let isLolos = true;
-  let alasanGagal = ""; // Variabel baru untuk menyimpan alasan spesifik
+  let alasanGagal = "";
 
-  // 1. TAHAP LEXICAL ANALYSIS (Pengecekan Awal)
   if (!inputUrl.startsWith('http://') && !inputUrl.startsWith('https://')) {
     logs.push("❌ Lexical: GAGAL. URL harus diawali dengan 'http://' atau 'https://'");
     isLolos = false;
@@ -19,7 +15,6 @@ const jalankanMesinAutomata = (inputUrl) => {
     logs.push("✅ Lexical: LULUS. Protokol format (http/https) ditemukan.");
   }
 
-  // 2. TAHAP SYNTAX (Regex)
   const regexPola = /^(https?):\/\/([a-zA-Z0-9.-]+)\.([a-zA-Z]{2,})(\/.*)?$/;
   if (isLolos) {
     if (!regexPola.test(inputUrl)) {
@@ -31,14 +26,12 @@ const jalankanMesinAutomata = (inputUrl) => {
     }
   }
 
-  // 3. TAHAP SYNTAX (Simulasi Transisi DFA)
   if (isLolos) {
     let isDfaError = false;
 
     for (let i = 0; i < inputUrl.length; i++) {
       let char = inputUrl[i];
 
-      // Simulasi aturan DFA: Jika bertemu karakter ilegal, masuk Dead State
       if (char === ' ' || char === '<' || char === '>' || char === '{' || char === '}') {
         logs.push(`❌ Syntax (DFA): GAGAL. Mesin berhenti di State Error (terdapat karakter ilegal '${char}' di indeks ke-${i}).`);
         isDfaError = true;
@@ -53,7 +46,6 @@ const jalankanMesinAutomata = (inputUrl) => {
     }
   }
 
-  // 4. TAHAP SEMANTIC ANALYSIS (Pengecekan Logika Makna)
   if (isLolos) {
     if (inputUrl.includes('..')) {
       logs.push("❌ Semantic: GAGAL. Terdapat titik ganda '..' yang merusak logika hirarki domain.");
@@ -64,23 +56,17 @@ const jalankanMesinAutomata = (inputUrl) => {
     }
   }
 
-  // MEMBUAT TEKS KESIMPULAN
   let teksKesimpulan = isLolos
     ? "URL dinyatakan VALID karena seluruh tahapan verifikasi berhasil dilalui. String memenuhi standar bahasa formal URL dan siap digunakan."
     : `URL TIDAK VALID karena gagal pada tahapan verifikasi. Alasan utama: ${alasanGagal}`;
 
-  // Mengembalikan hasil
   return {
     statusAkhir: isLolos,
     riwayatLog: logs,
-    kesimpulan: teksKesimpulan // Mengirim kesimpulan ke UI
+    kesimpulan: teksKesimpulan
   };
 };
 
-
-// =======================================================
-// BAGIAN 2: TAMPILAN WEB (User Interface)
-// =======================================================
 export default function Home() {
   const [url, setUrl] = useState('');
   const [hasilLog, setHasilLog] = useState([]);
@@ -97,24 +83,21 @@ export default function Home() {
     
     setStatusValid(hasil.statusAkhir);
     setHasilLog(hasil.riwayatLog);
-    setTeksKesimpulan(hasil.kesimpulan); // Menyimpan teks kesimpulan
+    setTeksKesimpulan(hasil.kesimpulan);
   };
 
   return (
     <div className="min-h-screen bg-gray-50 flex flex-col items-center py-10 px-4">
       <div className="bg-white p-8 rounded-xl shadow-lg max-w-2xl w-full border border-gray-100">
         
-        {/* Header */}
         <h1 className="text-3xl font-extrabold text-center text-blue-600 mb-2 tracking-tight">URL Validator Pro</h1>
         <p className="text-center text-gray-500 mb-8 text-sm">Automata-Based Verification System (Kelompok 7)</p>
 
-        {/* Form Input */}
         <div className="flex flex-col gap-4 mb-8">
           <label className="font-semibold text-gray-700">Masukkan URL yang ingin diuji:</label>
           <input
             type="text"
             className="w-full p-4 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 text-black font-mono text-sm"
-            placeholder="Contoh: https://unsri.ac.id"
             value={url}
             onChange={(e) => setUrl(e.target.value)}
           />
@@ -126,7 +109,6 @@ export default function Home() {
           </button>
         </div>
 
-        {/* Kotak Hasil Validasi */}
         {statusValid !== null && (
           <div className={`p-6 rounded-xl border ${statusValid ? 'bg-green-50 border-green-200' : 'bg-red-50 border-red-200'}`}>
             <h2 className={`text-2xl font-black mb-4 flex items-center gap-2 ${statusValid ? 'text-green-700' : 'text-red-700'}`}>
@@ -144,7 +126,6 @@ export default function Home() {
               </ul>
             </div>
 
-            {/* Kotak Khusus Kesimpulan */}
             <div className="mt-6 p-4 bg-white/80 rounded-lg border border-gray-200 shadow-inner">
               <p className="text-sm text-gray-800 leading-relaxed">
                 <strong className="text-gray-900 block mb-1">Kesimpulan Akhir:</strong>

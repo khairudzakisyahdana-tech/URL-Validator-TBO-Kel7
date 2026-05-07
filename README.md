@@ -28,7 +28,7 @@ Di dalam file tersebut, proses validasi dibagi menjadi 4 tahapan ala kompilator:
 
 ## 💻 Cara Menjalankan Secara Lokal (Opsional)
 
-Jika Bapak/Ibu ingin mengunduh dan menjalankan proyek ini di komputer lokal, silakan ikuti langkah-langkah standar Next.js berikut:
+Jika Ibu ingin mengunduh dan menjalankan proyek ini di komputer lokal, silakan ikuti langkah-langkah standar Next.js berikut:
 
 1. Buka terminal di dalam folder proyek ini.
 2. Pastikan dependencies sudah terinstal dengan menjalankan perintah `npm install`.

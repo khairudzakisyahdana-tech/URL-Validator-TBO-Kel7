@@ -9,13 +9,13 @@ const jalankanMesinAutomata = (inputUrl) => {
 
   if (!inputUrl.startsWith('http://') && !inputUrl.startsWith('https://')) {
     logs.push("❌ Lexical: GAGAL. URL harus diawali dengan 'http://' atau 'https://'");
-    isLolos = false;
+    isLolos = false;  
     alasanGagal = "Format awal (identifier protokol) tidak dikenali oleh sistem leksikal.";
   } else {
     logs.push("✅ Lexical: LULUS. Protokol format (http/https) ditemukan.");
   }
 
-  const regexPola = /^(https?):\/\/([a-zA-Z0-9.-]+)\.([a-zA-Z]{2,})(\/.*)?$/;
+  const regexPola = /^(https?):\/\/([a-zA-Z0-9.-]+)\.([a-zA-Z]{2,})(\/.*)?$/; 
   if (isLolos) {
     if (!regexPola.test(inputUrl)) {
       logs.push("❌ Syntax (Regex): GAGAL. Pola dasar string tidak sesuai standar URL.");

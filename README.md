@@ -1,36 +1,38 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# 🌐 URL Validator Pro - Teori Bahasa dan Automata (TBO)
 
-## Getting Started
+Proyek ini adalah tugas mata kuliah **Teori Bahasa dan Automata (TBO)** yang dikerjakan oleh **Kelompok 7**. Aplikasi ini merupakan simulasi mesin Automata (DFA) yang bertugas untuk memvalidasi kebenaran struktur sebuah URL web secara sekuensial.
 
-First, run the development server:
+---
+
+## 🚀 Live Demo (Akses Langsung)
+Bapak/Ibu Dosen tidak perlu mengunduh atau menjalankan proyek ini secara lokal. Aplikasi sudah di-*deploy* dan dapat diuji coba secara langsung melalui tautan berikut:
+
+👉 **[https://url-validator-tbo-kel7.vercel.app/](https://url-validator-tbo-kel7.vercel.app/)**
+
+---
+
+## 📂 Lokasi Kode Utama (Penting untuk Penilaian)
+
+Proyek ini dibangun menggunakan framework Next.js. Untuk memudahkan proses penilaian, **seluruh logika mesin Automata dan antarmuka pengguna (UI)** kami satukan di dalam satu file utama. 
+
+Bapak/Ibu dapat langsung memeriksa implementasi kodenya pada direktori berikut:
+> **`app/page.js`**
+
+Di dalam file tersebut, proses validasi dibagi menjadi 4 tahapan ala kompilator:
+1. **Lexical Analysis:** Pengecekan identifier awalan protokol (`http://` atau `https://`).
+2. **Syntax Analysis (Regex):** Pengecekan tata bahasa dasar menggunakan *Regular Expression*.
+3. **Syntax Analysis (DFA):** Simulasi *Deterministic Finite Automaton* dengan *looping* state untuk mendeteksi karakter ilegal (seperti spasi, `<`, `>`, dll).
+4. **Semantic Analysis:** Pengecekan logika makna struktur URL (mendeteksi cacat hirarki seperti titik ganda `..`).
+
+---
+
+## 💻 Cara Menjalankan Secara Lokal (Opsional)
+
+Jika Bapak/Ibu ingin mengunduh dan menjalankan proyek ini di komputer lokal, silakan ikuti langkah-langkah standar Next.js berikut:
+
+1. Buka terminal di dalam folder proyek ini.
+2. Pastikan dependencies sudah terinstal dengan menjalankan perintah `npm install`.
+3. Jalankan *development server*:
 
 ```bash
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
-
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
-
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
-
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
-
-## Learn More
-
-To learn more about Next.js, take a look at the following resources:
-
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
-
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.

@@ -5,7 +5,7 @@ Proyek ini adalah tugas mata kuliah **Teori Bahasa dan Automata (TBO)** yang dik
 ---
 
 ## 🚀 Live Demo (Akses Langsung)
-Bapak/Ibu Dosen tidak perlu mengunduh atau menjalankan proyek ini secara lokal. Aplikasi sudah di-*deploy* dan dapat diuji coba secara langsung melalui tautan berikut:
+Ibu tidak perlu mengunduh atau menjalankan proyek ini secara lokal. Aplikasi sudah di-*deploy* dan dapat diuji coba secara langsung melalui tautan berikut:
 
 👉 **[https://url-validator-tbo-kel7.vercel.app/](https://url-validator-tbo-kel7.vercel.app/)**
 
@@ -15,7 +15,7 @@ Bapak/Ibu Dosen tidak perlu mengunduh atau menjalankan proyek ini secara lokal. 
 
 Proyek ini dibangun menggunakan framework Next.js. Untuk memudahkan proses penilaian, **seluruh logika mesin Automata dan antarmuka pengguna (UI)** kami satukan di dalam satu file utama. 
 
-Bapak/Ibu dapat langsung memeriksa implementasi kodenya pada direktori berikut:
+Ibu dapat langsung memeriksa implementasi kodenya pada direktori berikut:
 > **`app/page.js`**
 
 Di dalam file tersebut, proses validasi dibagi menjadi 4 tahapan ala kompilator:
@@ -28,7 +28,7 @@ Di dalam file tersebut, proses validasi dibagi menjadi 4 tahapan ala kompilator:
 
 ## 💻 Cara Menjalankan Secara Lokal (Opsional)
 
-Jika Bapak/Ibu ingin mengunduh dan menjalankan proyek ini di komputer lokal, silakan ikuti langkah-langkah standar Next.js berikut:
+Jika Ibu ingin mengunduh dan menjalankan proyek ini di komputer lokal, silakan ikuti langkah-langkah standar Next.js berikut:
 
 1. Buka terminal di dalam folder proyek ini.
 2. Pastikan dependencies sudah terinstal dengan menjalankan perintah `npm install`.
